@@ -1,20 +1,31 @@
 {
     "cSpell.words": [
+        "bespin",
         "buildnode",
+        "deathmatch",
         "dockerhub",
         "freeplay",
+        "gameplay",
         "gamesvr",
+        "gametype",
+        "gametypes",
         "ghcr",
         "git",
+        "holocron",
+        "holocrons",
         "hub",
         "io",
         "jk",
         "laclede",
         "lacledeslan",
+        "lightsaber",
         "motd",
+        "nextmap",
         "outcast",
         "qemu",
         "secrets",
-        "username"
+        "tatooine",
+        "username",
+        "ysalamiri"
     ]
 }
