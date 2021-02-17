@@ -24,7 +24,7 @@ docker pull lacledeslan/gamesvr-jk2outcast-freeplay
 ### Run Simple, Interactive Server
 
 ```shell
-docker run -it --rm --net=host -v ~/jk2-assets/assets0.pk3:/app/base/assets0.pk3 -v ~/jk2-assets/assets1.pk3:/app/base/assets1.pk3 -v ~/jk2-assets/assets2.pk3:/app/base/assets2.pk3 -v ~/jk2-assets/assets5.pk3:/app/base/assets5.pk3 lacledeslan/gamesvr-jk2outcast ./jk2mvded +exec server.cfg +g_password "iCanHazRCon"
+docker run -it --rm --net=host -v ~/jk2-assets/assets0.pk3:/app/base/assets0.pk3 -v ~/jk2-assets/assets1.pk3:/app/base/assets1.pk3 -v ~/jk2-assets/assets2.pk3:/app/base/assets2.pk3 -v ~/jk2-assets/assets5.pk3:/app/base/assets5.pk3 lacledeslan/gamesvr-jk2outcast ./jk2mvded +exec server-ffa.cfg +g_password "iCanHazRCon"
 ```
 
 ## Getting Started with Game Servers in Docker
