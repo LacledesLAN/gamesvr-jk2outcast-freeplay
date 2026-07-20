@@ -1,27 +1,28 @@
-# escape=`
 ARG CONTAINER_REGISTRY="docker.io"
 
 FROM $CONTAINER_REGISTRY/lacledeslan/steamcmd:latest as downloader
 
 ARG contentServer=content.lacledeslan.net
 
-RUN echo $'\n\nDownloading LL custom content from content server' &&`
-        mkdir --parents /downloads/ &&`
-        cd /downloads/ &&`
+RUN echo $'\n\nDownloading LL custom content from content server' && \
+        mkdir --parents /downloads/ && \
+        cd /downloads/ && \
         wget -rkpN -l 1 -nH  --no-verbose --cut-dirs=3 -R "*.htm*" -e robots=off "http://"$contentServer"/fastDownloads/jk2outcast/base/";
+
 
 #=======================================================================
 FROM $CONTAINER_REGISTRY/lacledeslan/gamesvr-jk2outcast:latest
 
-ARG BUILDNODE="unspecified"
-ARG SOURCE_COMMIT
+ARG BUILD_NODE=unspecified
+ARG GIT_REVISION=unspecified
 
-LABEL com.lacledeslan.build-node $BUILDNODE `
-        org.opencontainers.image.source https://github.com/LacledesLAN/gamesvr-jk2outcast-freeplay `
-        org.opencontainers.image.title "Laclede's LAN Jedi Knight 2 Outcast Freeplay Dedicated Server" `
-        org.opencontainers.image.url https://github.com/LacledesLAN/README.1ST `
-        org.opencontainers.image.vendor "Laclede's LAN" `
-        org.opencontainers.image.version $SOURCE_COMMIT
+LABEL architecture="amd64" \
+    com.lacledeslan.build-node=$BUILD_NODE \
+    maintainer="Laclede's LAN <contact@lacledeslan.com>" \
+    org.opencontainers.image.description="Laclede's LAN Jedi Knight II: Jedi Outcast Freeplay Dedicated Server" \
+    org.opencontainers.image.revision=$GIT_REVISION \
+    org.opencontainers.image.source="https://github.com/LacledesLAN/gamesvr-jk2outcast-freeplay" \
+    org.opencontainers.image.vendor="Laclede's LAN"
 
 COPY --chown=JK2Outcast:root --from=downloader /downloads /app/base
 
