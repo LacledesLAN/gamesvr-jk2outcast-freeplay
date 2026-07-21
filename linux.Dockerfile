@@ -2,12 +2,12 @@ ARG CONTAINER_REGISTRY="docker.io"
 
 FROM $CONTAINER_REGISTRY/lacledeslan/steamcmd:latest AS downloader
 
-ARG contentServer=content.lacledeslan.net
+ARG CONTENT_SERVER=content.lacledeslan.net
 
 RUN echo $'\n\nDownloading LL custom content from content server' && \
         mkdir --parents /downloads/ && \
         cd /downloads/ && \
-        wget -rkpN -l 1 -nH  --no-verbose --cut-dirs=3 -R "*.htm*" -e robots=off "http://"$contentServer"/fastDownloads/jk2outcast/base/";
+        wget -rkpN -l 1 -nH  --no-verbose --cut-dirs=3 -R "*.htm*" -e robots=off "http://"$CONTENT_SERVER"/fastDownloads/jk2outcast/base/";
 
 
 #---------------------------------
@@ -28,7 +28,7 @@ LABEL architecture="amd64" \
 
 COPY --chown=JK2Outcast:root --from=downloader /downloads /app/base
 
-COPY --chown=JK2OutcastFreeplay:root /dist/configs /app/base
+COPY --chown=JK2Outcast:root /dist/configs /app/base
 
 # UPDATE USERNAME & ensure permissions
 RUN usermod -l JK2OutcastFreeplay JK2Outcast;
