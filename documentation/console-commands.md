@@ -10,7 +10,6 @@ Chapter 5- Console Command List
 Chapter 6- Skin Editing
 Chapter 7- JK2 Version 1.03 bugs (some useful)
 
-
 ## Chapter 1- GameType & Disable Command Variables
 
 I have tested these commands myself with JK2 version 1.03 & they work
